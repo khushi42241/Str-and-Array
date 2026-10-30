@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String and Array Problem</title>
+</head>
+
+<body>
+    <h1>KHUSHI PANDEY</h1>
+
+    <h2>String and Array Problem-Solving</h2>
+
+    <p>JavaScript Assignment 2</p>
+
+    <script>
+
+        // Q1. Function to reverse a string without using reverse()
+
+        function reverseString(str) {
+
+            let result = "";
+
+            for (let i = str.length - 1; i >= 0; i--) {
+
+                result = result + str[i];
+
+            }
+
+            return result;
+        }
+
+        console.log(" Reverse String:", reverseString("hello"));
+
+
+        // Q2. Function to check whether a string is palindrome
+
+        function isPalindrome(str) {
+
+            let original = str.toLowerCase();
+
+            let reversed = "";
+
+            for (let i = original.length - 1; i >= 0; i--) {
+
+                reversed = reversed + original[i];
+
+            }
+
+            if (original === reversed) {
+
+                return true;
+
+            }
+
+            else {
+
+                return false;
+
+            }
+        }
+
+        console.log(" Palindrome:", isPalindrome("madam"));
+
+
+        // Q3. Function to count vowels and consonants
+
+        function countVowelsConsonants(str) {
+
+            let vowels = 0;
+
+            let consonants = 0;
+
+            let text = str.toLowerCase();
+
+            for (let i = 0; i < text.length; i++) {
+
+                let ch = text[i];
+
+                if (ch >= "a" && ch <= "z") {
+
+                    if (
+                        ch === "a" ||
+                        ch === "e" ||
+                        ch === "i" ||
+                        ch === "o" ||
+                        ch === "u"
+                    ) {
+
+                        vowels++;
+
+                    }
+
+                    else {
+
+                        consonants++;
+
+                    }
+
+                }
+
+            }
+
+            return {
+                vowels: vowels,
+                consonants: consonants
+            };
+        }
+
+        console.log(" Vowels and Consonants:",
+            countVowelsConsonants("Hello World"));
+
+
+        // Q4. Function to find second-largest distinct number
+
+        function secondLargest(arr) {
+
+            let largest = -Infinity;
+
+            let second = -Infinity;
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (arr[i] > largest) {
+
+                    second = largest;
+
+                    largest = arr[i];
+
+                }
+
+                else if (
+                    arr[i] > second &&
+                    arr[i] < largest
+                ) {
+
+                    second = arr[i];
+
+                }
+
+            }
+
+            if (second === -Infinity) {
+
+                return "Second largest number not found";
+
+            }
+
+            return second;
+        }
+
+        console.log("Second Largest:",
+            secondLargest([10, 5, 20, 8, 20]));
+
+
+        // Q5. Function to remove duplicate elements without Set
+
+        function removeDuplicates(arr) {
+
+            let result = [];
+
+            for (let i = 0; i < arr.length; i++) {
+
+                let found = false;
+
+                for (let j = 0; j < result.length; j++) {
+
+                    if (arr[i] === result[j]) {
+
+                        found = true;
+
+                        break;
+
+                    }
+
+                }
+
+                if (found === false) {
+
+                    result.push(arr[i]);
+
+                }
+
+            }
+
+            return result;
+        }
+
+        console.log("Remove Duplicates:",
+            removeDuplicates([1, 2, 2, 3, 1]));
+
+
+        // Q6. Function to find sum of all even numbers
+
+        function sumEvenNumbers(arr) {
+
+            let sum = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (arr[i] % 2 === 0) {
+
+                    sum = sum + arr[i];
+
+                }
+
+            }
+
+            return sum;
+        }
+
+        console.log("Sum of Even Numbers:",
+            sumEvenNumbers([1, 2, 3, 4, 5, 6]));
+
+
+        // Q7. Function to find frequency of a given element
+
+        function findFrequency(arr, element) {
+
+            let count = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (arr[i] === element) {
+
+                    count++;
+
+                }
+
+            }
+
+            return count;
+        }
+
+        console.log("Element Frequency:",
+            findFrequency([1, 2, 2, 3, 2, 4], 2));
+
+
+        // Q8. Function to check whether two strings are anagrams
+
+        function areAnagrams(str1, str2) {
+
+            let first = str1.toLowerCase().replace(/\s/g, "");
+
+            let second = str2.toLowerCase().replace(/\s/g, "");
+
+            if (first.length !== second.length) {
+
+                return false;
+
+            }
+
+            let count = [];
+
+            for (let i = 0; i < first.length; i++) {
+
+                let ch = first[i];
+
+                if (count[ch] === undefined) {
+
+                    count[ch] = 1;
+
+                }
+
+                else {
+
+                    count[ch]++;
+
+                }
+
+            }
+
+            for (let i = 0; i < second.length; i++) {
+
+                let ch = second[i];
+
+                if (count[ch] === undefined || count[ch] === 0) {
+
+                    return false;
+
+                }
+
+                count[ch]--;
+
+            }
+
+            return true;
+        }
+
+        console.log("Anagram Check:",areAnagrams("listen", "silent"));
+
+
+        // Q9. Function to move all zeros to the end of an array
+
+        function moveZeros(arr) {
+
+            let result = [];
+
+            let zeroCount = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (arr[i] === 0) {
+
+                    zeroCount++;
+
+                }
+
+                else {
+
+                    result.push(arr[i]);
+
+                }
+
+            }
+
+            for (let i = 0; i < zeroCount; i++) {
+
+                result.push(0);
+
+            }
+
+            return result;
+        }
+
+        console.log("Move Zeros:",moveZeros([0, 1, 0, 3, 12]));
+
+
+    </script>
+
+</body>
+
+</html>
